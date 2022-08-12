@@ -5,6 +5,14 @@ from django.contrib.auth.models import User, Group
 
 from Enterprise.models import EnterpriseProfile
 
+#Uploading all photos 
+class UserImage(models.Model):
+    #TODO falta agregar la direccion del archivo
+    profile_image = models.FileField(upload_to='User', default=None)
+    description_image = models.FileField(upload_to='User', default=None)
+    other_image = models.FileField(upload_to='User', default=None)
+    
+    
 #Properties of the user
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True)
@@ -19,13 +27,12 @@ class UserProfile(models.Model):
     user_country = models.CharField(max_length=40, null=True, blank=True)
     user_gender = models.CharField(max_length=6, blank=True)
     status = models.CharField(max=40, null=True, blank=True)
+    user_profile_image = models.OneToOneField(UserImage, on_delete=models.PROTECT,
+                                              related_name="user_profile")
     
     def __str__(self):
       return self.user, self.email
     
-#Uploading all photos 
-class Image(models.Model):
-    #TODO falta agregar la direccion del archivo
-    image = models.FileField(upload_to='User')
 
-    
+
+   
