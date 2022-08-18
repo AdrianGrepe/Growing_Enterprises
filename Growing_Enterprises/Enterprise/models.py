@@ -1,6 +1,7 @@
 #Django
 from django.db import models
 
+#Utilities
 from User.models import User, UserProfile
 
 
@@ -29,13 +30,13 @@ class Membership(models.Model):
     type_membership = models.CharField(max_length=3, default=None, blank=True)
     
     def __str__(self):
-        return
+        return self.type_membership
    
 class EnterpriseAddress(models.Model):
     country = models.CharField(max_length=100, default=None, blank=True)
-    address_province = models.CharField(max_length=100, default=None, blank=True)
-    address_city = models.CharField(max_length=100, default=None, blank=True)
-    address_suburb = models.CharField(max_length=100, default=None, blank=True)
+    province = models.CharField(max_length=100, default=None, blank=True)
+    city = models.CharField(max_length=100, default=None, blank=True)
+    suburb = models.CharField(max_length=100, default=None, blank=True)
     address_street = models.CharField(max_length=500, default=None, blank=True)
     address_int_number = models.CharField(max_length=500, default=None, blank=True)
     postal_code = models.CharField(max_length=10, default=None, blank=True)
@@ -47,7 +48,7 @@ class EnterpriseAddress(models.Model):
 class Scoring(models.Model):
     value = models.CharField(max_length=100, default=None, blank=True)
     comment = models.CharField(max_length=1000, default=None, blank=True)
-    status = 
+    status = models.CharField(max_length=20, default=None, blank=True)
 
     def __str__(self):
         return self.value, self.comment
@@ -55,8 +56,8 @@ class Scoring(models.Model):
     
 class EnterpriseCalendar(models.Model):
    inicial_date = models.DateField(default=None, auto_now_add=False)
-   termination_date = models.DateField(default=None, auto_now_add=False)
+   final_date = models.DateField(default=None, auto_now_add=False)
    duration_time = models.DateField(default=None, null=True)
    
    def __str__(self):
-       return self.inicial_date
+       return self.inicial_date, self.final_date
