@@ -36,11 +36,13 @@ class EnterpriseProfile(models.Model):
 class Membership(models.Model):
     '''
     Details of the membership plan:
-    Profile, time
+    Profile, time, and price
     '''
     enterprise_membership = models.OneToOneField(EnterpriseProfile, on_delete=models.CASCADE,
                               related_name='enterprise_user'))
     type_membership = models.CharField(max_length=3, default=None, blank=True)
+    price_membership = models.DecimalField(max_length=3, default=None, blank=True)
+
     
     def __str__(self):
         return self.type_membership
