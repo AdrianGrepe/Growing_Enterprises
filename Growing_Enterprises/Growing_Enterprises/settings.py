@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     # 'dbbackup',
     
     #External apps
-    'ecommerce_app',
     'paypal.standard.ipn',
 ]
 
