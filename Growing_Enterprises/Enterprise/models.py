@@ -22,6 +22,7 @@ class EnterpriseProfile(models.Model):
     enterprise_email = models.EmailField(unique=True, null=True, blank=True)
     enterprise_phone_number = models.DecimalField(max_digits=16, unique=False, null=True, blank=True)
     enterprise_date_of_birth = models.DateField(default=None, null=True)
+
     enterprise_place_of_birth = models.CharField(max_length=64, blank=True)
     enterprise_country = models.CharField(max_length=64, blank=True)
     enterprise_activity = models.CharField(max_length=64, blank=True)
@@ -34,6 +35,7 @@ class EnterpriseProfile(models.Model):
         return
     
 class Membership(models.Model):
+
     '''
     Details of the membership plan:
     Profile, time, and price
@@ -53,6 +55,7 @@ class EnterpriseAddress(models.Model):
     Country, Province, city, suburb, street, int number, postal code.
     '''
 
+
     country = models.CharField(max_length=100, default=None, blank=True)
     province = models.CharField(max_length=100, default=None, blank=True)
     city = models.CharField(max_length=100, default=None, blank=True)
@@ -64,11 +67,13 @@ class EnterpriseAddress(models.Model):
     def __str__(self):
         return self.country, self.address_street
 
+
 class Scoring(models.Model): 
     '''
     Inputs for scoring enterprise:
     value of the enterprise, coments, status.
     '''
+
     value = models.CharField(max_length=100, default=None, blank=True)
     comment = models.CharField(max_length=1000, default=None, blank=True)
     status = models.CharField(max_length=20, default=None, blank=True)
@@ -77,6 +82,7 @@ class Scoring(models.Model):
         return self.value, self.comment
     
     
+
 class EnterpriseCalendar(models.Model): 
     '''
     Calendar for events:
@@ -85,6 +91,7 @@ class EnterpriseCalendar(models.Model):
    initial_date = models.DateField(default=None, auto_now_add=False)
    final_date = models.DateField(default=None, auto_now_add=False)
    duration_time = models.TimeField(default=None, null=True)
+
    
    def __str__(self):
        return self.inicial_date, self.final_date

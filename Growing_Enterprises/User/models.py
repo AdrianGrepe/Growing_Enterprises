@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, Group
 #Utilities
 from Enterprise.models import EnterpriseProfile
 
+
 class UserImage(models.Model):
     ''' 
     Upload all user images and its description:
@@ -38,6 +39,7 @@ class UserProfile(models.Model):
     status = models.CharField(max=40, null=True, blank=True)
     user_profile_image = models.OneToOneField(UserImage, on_delete=models.PROTECT,
                                               related_name="user_profile") #a one to one relationship
+
     
     def __str__(self):
       return self.user, self.email
