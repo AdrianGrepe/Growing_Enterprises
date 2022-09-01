@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django.contrib.humanize',
-    'django_crontab',
+    # 'django_crontab',
     
     #Local apps
     'User',
