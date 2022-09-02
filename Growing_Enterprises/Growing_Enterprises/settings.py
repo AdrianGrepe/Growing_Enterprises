@@ -35,7 +35,7 @@ SECRET_KEY = config['SECRET_KEY']
 DEBUG = True
 
 
-ALLOWED_HOSTS = config['ALLOWED_HOSTS']
+ALLOWED_HOSTS = [config['ALLOWED_HOSTS']]
 
 
 # Application definition
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django.contrib.humanize',
-    'django_crontab',
+    # 'django_crontab',
     
     #Local apps
     'User',
@@ -146,10 +146,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static') AQUI VER BIEN SI EL PATH ES EL CORRECTO
+STATIC_ROOT = os.path.join(BASE_DIR,'static') 
+"AQUI VER BIEN SI EL PATH ES EL CORRECTO"
 STATIC_URL = '/static/'
 STATICFILES_DIR = (
-    os.path.join(BASE_DIR,'static'), AQUI TAMBIEN VERIFICAR EL PATH ES EL CORRECTO
+    os.path.join(BASE_DIR,'static'),
+    "AQUI TAMBIEN VERIFICAR EL PATH ES EL CORRECTO"
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

@@ -41,7 +41,7 @@ class Membership(models.Model):
     Profile, time, and price
     '''
     enterprise_membership = models.OneToOneField(EnterpriseProfile, on_delete=models.CASCADE,
-                              related_name='enterprise_user'))
+                              related_name='enterprise_user')
     type_membership = models.CharField(max_length=3, default=None, blank=True)
     price_membership = models.DecimalField(max_length=3, default=None, blank=True)
 
