@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User, Group
 
 #Utilities
-from Enterprise.models import EnterpriseProfile
+# from Enterprise.models import EnterpriseProfile
 
 
 class UserImage(models.Model):
@@ -26,9 +26,9 @@ class UserProfile(models.Model):
     user profile image
     '''
     user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True)
-    user_register_date = models.DateField(default=None, auto_now_add=True)
-    user_phone_number = models.DecimalField(max_digits=15, default=None, null=True)
-    foreign_lada = models.DecimalField(max_digits=3, default=None, null=True, blank=True)
+    user_register_date = models.DateField(auto_now_add=True)
+    user_phone_number = models.DecimalField(max_digits=15, decimal_places=2, default=None, null=True)
+    foreign_lada = models.DecimalField(max_digits=3, decimal_places=2, default=None, null=True, blank=True)
     date_of_birth = models.DateField(default=None,null=True)
     user_rfc = models.CharField(max_length=18, unique=True, null=True)
     user_email = models.EmailField(unique=True, null=False, blank=False)
@@ -36,7 +36,7 @@ class UserProfile(models.Model):
     user_address = models.CharField(max_length=500, null=True, blank=True)
     user_country = models.CharField(max_length=40, null=True, blank=True)
     user_gender = models.CharField(max_length=6, blank=True)
-    status = models.CharField(max=40, null=True, blank=True)
+    status = models.CharField(max_length=40, null=True, blank=True)
     user_profile_image = models.OneToOneField(UserImage, on_delete=models.PROTECT,
                                               related_name="user_profile") #a one to one relationship
 
