@@ -4,7 +4,6 @@ from django.db import models
 #Utilities
 from User.models import User, UserProfile
 
-''' Death to Adrian '''
 
 class EnterpriseProfile(models.Model):
     '''
@@ -88,10 +87,10 @@ class EnterpriseCalendar(models.Model):
     Calendar for events:
     Initial date, termination date, duration of the event (in hours)
     '''
-   initial_date = models.DateField(default=None, auto_now_add=False)
-   final_date = models.DateField(default=None, auto_now_add=False)
-   duration_time = models.TimeField(default=None, null=True)
+    initial_date = models.DateField(default=None, auto_now_add=False)
+    final_date = models.DateField(default=None, auto_now_add=False)
+    duration_time = models.TimeField(default=None, null=True)
 
    
-   def __str__(self):
+    def __str__(self):
        return self.inicial_date, self.final_date
