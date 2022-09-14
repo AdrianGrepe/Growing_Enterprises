@@ -2,7 +2,7 @@
 from django.db import models
 
 #Utilities
-from User.models import User, UserProfile
+from User.models import User, UserProfile, UserImage
 
 
 class EnterpriseProfile(models.Model):
@@ -13,13 +13,13 @@ class EnterpriseProfile(models.Model):
     profile image, activity. 
 
     '''
-    user = models.ForeignKey(User, on_delete=models.PROTECT, primary_key=True) #A many-to-one relationship. Requires two positional arguments: the class to which the model is related and the on_delete option.
-    enterprise_register_date = models.DateField(default=None, auto_now_add=True) #register date of the company
+    user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True) #A many-to-one relationship. Requires two positional arguments: the class to which the model is related and the on_delete option.
+    enterprise_register_date = models.DateField(auto_now_add=True) #register date of the company
     # A string field, business name
     business_name = models.CharField(max_length=250, default=None, null=False, blank=False) 
     tax_regime = models.CharField(max_length=250, default=None, null=False, blank=True)
     enterprise_email = models.EmailField(unique=True, null=True, blank=True)
-    enterprise_phone_number = models.DecimalField(max_digits=16, unique=False, null=True, blank=True)
+    enterprise_phone_number = models.DecimalField(decimal_places=2, max_digits=16, unique=False, null=True, blank=True)
     enterprise_date_of_birth = models.DateField(default=None, null=True)
 
     enterprise_place_of_birth = models.CharField(max_length=64, blank=True)
@@ -42,7 +42,7 @@ class Membership(models.Model):
     enterprise_membership = models.OneToOneField(EnterpriseProfile, on_delete=models.CASCADE,
                               related_name='enterprise_user')
     type_membership = models.CharField(max_length=3, default=None, blank=True)
-    price_membership = models.DecimalField(max_length=3, default=None, blank=True)
+    price_membership = models.DecimalField(decimal_places=2, max_digits=3, default=None, blank=True)
 
     
     def __str__(self):

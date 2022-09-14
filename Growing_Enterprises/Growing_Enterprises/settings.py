@@ -55,12 +55,13 @@ INSTALLED_APPS = [
     #Local apps
     'User',
     'Growing_Enterprises',
+    'Enterprise',
     # 'records',
     # 'admin_honeypot',
     # 'dbbackup',
     
     #External apps
-    'paypal.standard.ipn',
+    #'paypal.standard.ipn',
 
 ]
 
