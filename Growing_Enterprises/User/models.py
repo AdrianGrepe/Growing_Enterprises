@@ -12,9 +12,9 @@ class UserImage(models.Model):
     Upload all user images and its description:
     Profile image, description image and other image.
     ''' 
-    profile_image = models.FileField(upload_to='User', default=None) #created in your database as varchar columns with a default max length of 100 characters
-    description_image = models.FileField(upload_to='User', default=None)
-    other_image = models.FileField(upload_to='User', default=None)
+    profile_image = models.FileField(upload_to='user/profile_image', default=None) #created in your database as varchar columns with a default max length of 100 characters
+    description_image = models.FileField(upload_to='user/description_image', default=None)
+    other_image = models.FileField(upload_to='user/other_image', default=None)
     
     
 #Properties of the user
@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True)
     user_register_date = models.DateField(auto_now_add=True)
     user_phone_number = models.DecimalField(max_digits=15, decimal_places=2, default=None, null=True)
-    foreign_lada = models.DecimalField(max_digits=3, decimal_places=2, default=None, null=True, blank=True)
+    foreign_lada = models.DecimalField(max_digits=5, decimal_places=2, default=None, null=True, blank=True)
     date_of_birth = models.DateField(default=None,null=True)
     user_rfc = models.CharField(max_length=18, unique=True, null=True)
     user_email = models.EmailField(unique=True, null=False, blank=False)
@@ -42,7 +42,7 @@ class UserProfile(models.Model):
 
     
     def __str__(self):
-      return self.user, self.email
+      return f'{self.user} {self.user_email}'
     
 
 

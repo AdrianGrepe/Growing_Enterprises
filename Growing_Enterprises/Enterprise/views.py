@@ -11,13 +11,12 @@ from .models import Membership
 
 def process_payment(request):
     order_id = request.session.get('order_id')
-    order = get_object_or_404(Membership, id=order_id)
+    order = get_object_or_404(Membership, id=1)
     host = request.get_host()
 
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '%.2f' % order.total_cost().quantize(
-            Decimal('.01')),
+        'amount': '%.2f' % order.price_membership,
         'item_name': 'Order {}'.format(order.id),
         'invoice': str(order.id),
         'currency_code': 'MXN',
