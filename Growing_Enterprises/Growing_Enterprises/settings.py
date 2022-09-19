@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     # 'dbbackup',
     
     #External apps
-    #'paypal.standard.ipn',
+    'paypal.standard.ipn',
 
 ]
 
@@ -80,7 +80,7 @@ ROOT_URLCONF = 'Growing_Enterprises.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'AQUI VA lA CARPETA DE LOS TEMPLATES')],
+        'DIRS': [os.path.join(BASE_DIR,)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,14 +150,22 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR,'static') 
 "AQUI VER BIEN SI EL PATH ES EL CORRECTO"
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIR = (
     os.path.join(BASE_DIR,'static'),
-    "AQUI TAMBIEN VERIFICAR EL PATH ES EL CORRECTO"
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+
+# Handling database images
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -165,7 +173,7 @@ STATICFILES_FINDERS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-PAYPAL_RECEIVER_EMAIL = ''
+PAYPAL_RECEIVER_EMAIL = config['PAYPAL_RECEIVER_EMAIL']
 
 
 PAYPAL_TEST = True

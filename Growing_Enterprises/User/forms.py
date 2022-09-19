@@ -1,0 +1,30 @@
+# # Django
+# from django.forms import ModelForm
+# from django.contrib.auth.models import User, Group
+# from django.db import models
+
+# # Models
+# from .models import UserProfile
+
+# class UserForm (ModelForm):
+
+#     class Meta:
+#         model = UserProfile
+#         fields = [
+#             'user_register_date', 'user_register_date', 'foreign_lada', 'date_of_birth',
+#             'user_rfc', 'user_email', 'user_full_name'
+#         ]
+
+#         user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True)
+#     user_register_date = models.DateField(auto_now_add=True)
+#     user_phone_number = models.DecimalField(max_digits=15, decimal_places=2, default=None, null=True)
+#     foreign_lada = models.DecimalField(max_digits=5, decimal_places=2, default=None, null=True, blank=True)
+#     date_of_birth = models.DateField(default=None,null=True)
+#     user_rfc = models.CharField(max_length=18, unique=True, null=True)
+#     user_email = models.EmailField(unique=True, null=False, blank=False)
+#     user_full_name = models.CharField(max_length=250, null=False, blank=False)
+#     user_address = models.CharField(max_length=500, null=True, blank=True)
+#     user_country = models.CharField(max_length=40, null=True, blank=True)
+#     user_gender = models.CharField(max_length=6, blank=True)
+#     status = models.CharField(max_length=40, null=True, blank=True)
+#     user_profile_image = models.OneToOneField(UserImage, on_delete=models.PROTECT,

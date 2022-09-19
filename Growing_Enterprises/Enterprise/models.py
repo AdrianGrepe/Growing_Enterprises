@@ -31,7 +31,7 @@ class EnterpriseProfile(models.Model):
                                               related_name="enterprise_profile")
 
     def __str__(self):
-        return
+        return self.tax_regime
     
 class Membership(models.Model):
 
@@ -42,7 +42,7 @@ class Membership(models.Model):
     enterprise_membership = models.OneToOneField(EnterpriseProfile, on_delete=models.CASCADE,
                               related_name='enterprise_user')
     type_membership = models.CharField(max_length=3, default=None, blank=True)
-    price_membership = models.DecimalField(decimal_places=2, max_digits=3, default=None, blank=True)
+    price_membership = models.DecimalField(decimal_places=2, max_digits=5, default=None, blank=True)
 
     
     def __str__(self):
