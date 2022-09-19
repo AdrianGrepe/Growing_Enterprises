@@ -80,7 +80,7 @@ ROOT_URLCONF = 'Growing_Enterprises.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'AQUI VA lA CARPETA DE LOS TEMPLATES')],
+        'DIRS': [os.path.join(BASE_DIR,)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
