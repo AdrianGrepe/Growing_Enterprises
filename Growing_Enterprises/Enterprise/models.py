@@ -17,16 +17,16 @@ class EnterpriseProfile(models.Model):
     enterprise_register_date = models.DateField(auto_now_add=True) #register date of the company
     # A string field, business name
     business_name = models.CharField(max_length=250, default=None, null=False, blank=False) 
-    tax_regime = models.CharField(max_length=250, default=None, null=False, blank=True)
+    tax_regime = models.CharField(max_length=250, default='', null=False, blank=True)
     enterprise_email = models.EmailField(unique=True, null=True, blank=True)
     enterprise_phone_number = models.DecimalField(decimal_places=2, max_digits=16, unique=False, null=True, blank=True)
-    enterprise_date_of_birth = models.DateField(default=None, null=True)
+    enterprise_date_of_birth = models.DateField(default=None, null=True, blank=True)
 
     enterprise_place_of_birth = models.CharField(max_length=64, blank=True)
-    enterprise_country = models.CharField(max_length=64, blank=True)
-    enterprise_activity = models.CharField(max_length=64, blank=True)
-    rfc = models.CharField(max_length=15, unique=True, null=True)
-    description = models.CharField(max_length=250, blank=True)
+    enterprise_country = models.CharField(max_length=64, blank=True, default='')
+    enterprise_activity = models.CharField(max_length=64, blank=True, default='')
+    rfc = models.CharField(max_length=15, unique=True, null=True, blank=True, default=None)
+    description = models.CharField(max_length=250, blank=True, default='')
     enterprise_profile_image = models.OneToOneField(UserImage, on_delete=models.PROTECT,
                                               related_name="enterprise_profile")
 
@@ -39,8 +39,8 @@ class Membership(models.Model):
     Details of the membership plan:
     Profile, time, and price
     '''
-    enterprise_membership = models.OneToOneField(EnterpriseProfile, on_delete=models.CASCADE,
-                              related_name='enterprise_user')
+    user_membership = models.OneToOneField(UserProfile, on_delete=models.CASCADE,
+                              related_name='user_membership', default=None)
     type_membership = models.CharField(max_length=3, default=None, blank=True)
     price_membership = models.DecimalField(decimal_places=2, max_digits=5, default=None, blank=True)
 
