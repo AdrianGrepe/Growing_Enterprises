@@ -1,1 +1,242 @@
-<p>Aquí va el formulario de perfil</p>
+{% load static %}
+
+<!doctype html>
+<html lang="es-MX">
+
+<head>
+    <title>Registro crédito</title>
+</head>
+
+<body>
+
+
+    <form action="{% url 'nuevo_portafolio' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <h2 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">Datos
+                personales del acreedor</h2>
+            <div style="border-bottom: 1px solid black; padding: 5vh 0; ">
+                <div>
+                    <label for="id_first_name">
+                        Nombre(s)
+                        {{client.first_name}}
+                    </label>
+                    <label for="id_last_name">
+                        Apellido paterno
+                        {{client.last_name}}
+                    </label>
+                    <label for="id_last_name2">
+                        Apellido materno
+                        {{client.profile.last_name2}}
+                    </label>
+                    <label for="id_gender">
+                        Género
+                        {{client.profile.gender}}
+                    </label>
+                </div>
+                <div>
+                    <label for="id_nationality">
+                        Nacionalidad
+                        {{client.profile.nacionality}}
+                    </label>
+                    <label for="id_birth_date">
+                        Fecha de nacimiento
+                        <small>{{client.profile.date_of_birth}}</small>
+                    </label>
+                    <label for="id_phone">
+                        Teléfono
+                        {{client.profile.phone_number}}
+                    </label>
+                </div>
+                <div>
+                    <label for="id_email">
+                        Correo electrónico
+                        {{client.email}}
+                        <label for="id_recovery_email">
+                            Correo de recuperación
+                            {{client.profile.recovery_email}}
+                        </label>
+                </div>
+                <div>
+                    <label for="id_curp">
+                        CURP
+                        {{client.profile.ID_number}}
+                    </label>
+                    <label for="id_rfc">
+                        RFC
+                        {{client.profile.rfc}}
+                    </label>
+                </div>
+                <div>
+                    <h3 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">
+                        Domicilio</h3>
+                    <label for="id_postal_code">
+                        País
+                        ...
+                    </label>
+                    <label for="id_postal_code">
+                        Código postal
+                        {{client.profile.address.postal_code}}
+                    </label>
+                    <label for="id_suburb">
+                        Colonia
+                        {{client.profile.address.address_line2}}
+                    </label>
+                    <label for="id_street">
+                        Calle, número exterior - número interior
+                        {{client.profile.address.address_line1}}
+                    </label>
+                </div>
+                <div>
+                    <h3 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">
+                        Comprobantes de identificación</h3>
+                    <label for="id_personal_id">
+                        INE / PASAPORTE Anverso
+                        {% if client.profile.identity_proof_front.proof %}
+                        <a href={{client.profile.identity_proof_front.proof.url}} target="_blank">
+                            <img width="200px" src={{client.profile.identity_proof_front.proof.url}}>
+                        </a>
+                        {% endif %}
+                    </label>
+                    <label for="id_personal_id">
+                        INE / PASAPORTE Reverso
+                        {% if client.profile.identity_proof_back.proof %}
+                        <a href={{client.profile.identity_proof_back.proof.url}} target="_blank">
+                            <img width="200px" src={{client.profile.identity_proof_back.proof.url}}>
+                        </a>
+                        {% endif %}
+                    </label>
+                    <label for="id_adress_voucher">
+                        COMPROBANTE DOMICILIO
+                        {% if client.profile.recidency_proof.proof %}
+                        <a href={{client.profile.recidency_proof.proof.url}} target="_blank">
+                            <img width="200px" src="{{client.profile.recidency_proof.proof.url}}">
+                        </a>
+                        {% endif %}
+                    </label>
+
+                </div>
+            </div>
+        </section>
+        <section id="personal_information_form" {% if client_already_exists %} style="display: none;" {% endif %}>
+            <h2 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">Datos
+                personales del acreedor</h2>
+            <div style="border-bottom: 1px solid black; padding: 5vh 0; ">
+                <div>
+                    <label for="id_first_name">
+                        Nombre(s)
+                        <input type="text" name="first_name" placeholder="Nombre(s)" maxlength="30" class="form_input"
+                            required="" id="id_first_name">
+                    </label>
+                    <label for="id_last_name">
+                        Apellido paterno
+                        <input type="text" name="last_name" placeholder="Apellido paterno" maxlength="150"
+                            class="form_input" required="" id="id_last_name" {% if client_already_exists %}
+                            value='{{client.last_name}}' {% endif %}>
+                    </label>
+                    <label for="id_last_name2">
+                        Apellido materno
+                        <input type="text" name="last_name2" placeholder="Apellido materno" maxlength="150"
+                            class="form_input" id="id_last_name2" {% if client_already_exists %}
+                            value='{{client.profile.last_name2}}' {% endif %}>
+                    </label>
+                    <label for="id_gender">
+                        Género
+                    </label>
+                    <select name="gender" id="id_gender">
+                        {% if client_already_exists %}
+                        <option value={{client.profile.gender}} selected>
+                            {{client.profile.gender}}
+                        </option>
+                        <option disabled>_________</option>
+                        {% endif %}
+                        <option value="Mujer">Mujer</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+
+                </div>
+                <div>
+                    <label for="id_nationality">
+                        Nacionalidad
+                        <input type="text" name="nacionality" id="id_nationality">
+                    </label>
+                    <label for="id_birth_date">
+                        Fecha de nacimiento
+
+                        <input type="date" name="date_of_birth" id="id_birth_date">
+
+                    </label>
+                    <label for="id_phone">
+                        Teléfono
+                        <input type="tel" name="phone_number" id="id_phone">
+                    </label>
+                </div>
+                <div>
+                    <label for="id_email">
+                        Correo electrónico
+                        <input type="email" name="email" placeholder="nombre@ejemplo.com" class="form_input" required=""
+                            id="id_email"> </label>
+                    <label for="id_recovery_email">
+                        Correo de recuperación
+                        <input type="text" name="recovery_email" id="id_recovery_email">
+                    </label>
+                </div>
+                <div>
+                    <label for="id_curp">
+                        CURP
+                        <input type="text" name="ID_number" id="id_curp">
+                    </label>
+                    <label for="id_rfc">
+                        RFC
+                        <input type="text" name="rfc" id="id_rfc">
+                    </label>
+                </div>
+                <div>
+                    <h3 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">
+                        Domicilio</h3>
+                    <label for="id_postal_code">
+                        País
+                        {{ register_data_form.country_code }}
+                    </label>
+                    <label for="id_postal_code">
+                        Código postal
+                        <input type="number" name="postal_code" id="id_postal_code">
+                    </label>
+                    <label for="id_street">
+                        Calle, número exterior
+                        <input type="text" name="address_line1" id="id_street">
+                    </label>
+                    <label for="id_address_line2">
+                        Detalles extra: número interior, nombre del edificio, etc.
+                        <input type="text" name="address_line2" id="address_line2">
+                    </label>
+
+                </div>
+                <div>
+                    <h3 style="margin-left: 30px; font-family: 'Montserrat'; font-weight:300; color:#0071E3">
+                        Comprobantes de identificación</h3>
+                    <label for="id_personal_id">
+                        INE / PASAPORTE Anverso
+
+                        <input type="file" name="identity_proof_front" id="id_postal_code">
+                    </label>
+                    <label for="id_personal_id">
+                        INE / PASAPORTE Reverso
+
+                        <input type="file" name="identity_proof_back" id="id_postal_code">
+                    </label>
+                    <label for="id_adress_voucher">
+                        COMPROBANTE DOMICILIO
+
+                        <input type="file" name="residency_proof" id="id_adress_voucher">
+                    </label>
+
+                </div>
+            </div>
+        </section>
+
+    </form>
+
+</body>
+
+</html>
