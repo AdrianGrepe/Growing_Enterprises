@@ -4,7 +4,61 @@
 <head>
 <style>
     @import "https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Montserrat:300,400,500,600,700&display=swap";
-body{
+carousel-height: 50px;
+control-size: 50px;
+    .carousel {
+  width: 80vw;
+  height: $carousel-height;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); }
+  
+  .controls {
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease 0.5s;}
+    
+    .control {
+      margin: 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      opacity: .5;
+      transition: ease .3s;
+      cursor: pointer;
+
+    }
+  
+  
+    .slides {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      width: 100%;
+      transition: 1s ease-in-out all;}
+      
+      .slide {
+        min-width: 100%;
+        min-height: $carousel-height;
+        height: auto;
+      }
+    
+
+
+    body{
     font-family:josefin sans,sans-serif;
     font-size:16px;
     color:#9d9ea5;
@@ -205,7 +259,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
               href="contact"
             >
               <span class="btn-area">
-                <span data-text="Get in touch">
+                <span data-text="Hola!">
                   Iniciar Sesión
                 </span>
               </span>
@@ -222,12 +276,12 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
 
   
   <!-- Site Hero Start -->
-  <section class="site-hero" style="background-image: url('hero.jpeg');">
+  <section class="site-hero" style="background-image: url('https://images.unsplash.com/photo-1604372425350-fdf0bcebb0f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80');">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
           <div class="site-hero-content text-center">
-            <h6>Escribamos algo</h6>
+            <h6>Potencia tu crecimiento</h6>
             <h1>
               .
             </h1>
@@ -236,7 +290,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
                 <a href="/portfolio" class="btn btn-secondary">
                   <span class="btn-area">
                     <span data-text="Otro link">
-                      Un boton
+                      Soy una PyME
                     </span>
                   </span>
                 </a>
@@ -245,7 +299,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
                 <a href="/contact" class="btn btn-primary">
                   <span class="btn-area">
                     <span data-text="Escríbenos">
-                      otro boton
+                      Soy Usuario
                     </span>
                   </span>
                 </a>
@@ -255,11 +309,22 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         </div>
       </div>
     </div>
-    <a href="#counter" class="site-hero-scroll scroll-to">
-      <img src="hero.svg" alt="arrow-down">
-    </a>
+    <!-- <a href="#counter" class="site-hero-scroll scroll-to">
+      <img src="https://images.unsplash.com/photo-1495725274072-fd5d0b961a9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=543&q=80" alt="arrow-down">
+    </a> -->
   </section>
   <!-- Site Hero End -->
+  <!-- <div class="carousel">
+    <div class="slides">
+      <img src="https://images.unsplash.com/photo-1495725274072-fd5d0b961a9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=543&q=80" alt="slide image" class="slide">
+      <img src="https://images.unsplash.com/photo-1604372425350-fdf0bcebb0f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="slide image" class="slide">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="slide image" class="slide">
+    </div>
+    <div class="controls">
+      <div class="control prev-slide">&#9668;</div>
+      <div class="control next-slide">&#9658;</div>
+    </div>
+  </div> -->
   
 
 
@@ -316,14 +381,14 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-12">
           <div class="section-title">
             <h2></h2>
-            <p>Crafting experiences and seeking to make the complex clear &amp; beautiful.</p>
+            <p>Usuarios satisfechos. Empresas mejorando.</p>
           </div>
         </div>
         
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img1.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1612831660846-778e3a5548bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>Diseñadores</span>
@@ -336,7 +401,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img2.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>TI </span>
@@ -349,7 +414,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img3.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1581092581294-a030b4f01a11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>Servicios</span>
@@ -362,7 +427,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img4.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>Desarrollos.</span>
@@ -375,7 +440,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img7.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1515630771457-09367d0ae038?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>Fábricas</span>
@@ -388,7 +453,7 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
         <div class="col-lg-6 col-md-10 mx-auto">
           <div class="site-project-item">
             <div class="site-project-item-thumb">
-              <img src="img9.jpeg" alt="project-thumb">
+              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="project-thumb">
             </div>
             <div class="site-project-item-content">
               <span>REBRAND</span>
@@ -601,4 +666,40 @@ h6{font-size:15px;font-weight:300}.btn{font-family:montserrat,sans-serif;border:
 
 </body>
 </html>
+<script>
+  const delay = 3000; //ms
 
+const slides = document.querySelector(".slides");
+const slidesCount = slides.childElementCount;
+const maxLeft = (slidesCount - 1) * 100 * -1;
+
+let current = 0;
+
+function changeSlide(next = true) {
+  if (next) {
+    current += current > maxLeft ? -100 : current * -1;
+  } else {
+    current = current < 0 ? current + 100 : maxLeft;
+  }
+
+  slides.style.left = current + "%";
+}
+
+let autoChange = setInterval(changeSlide, delay);
+const restart = function() {
+  clearInterval(autoChange);
+  autoChange = setInterval(changeSlide, delay);
+};
+
+// Controls
+document.querySelector(".next-slide").addEventListener("click", function() {
+  changeSlide();
+  restart();
+});
+
+document.querySelector(".prev-slide").addEventListener("click", function() {
+  changeSlide(false);
+  restart();
+});
+
+</script>
