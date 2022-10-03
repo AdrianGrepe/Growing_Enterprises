@@ -41,8 +41,8 @@ class UserProfile(models.Model):
     user_rfc = models.CharField(_("RFC"), max_length=18, unique=True, null=True)
     user_email = models.EmailField(_("correo electrónico"), unique=True, null=False, blank=False)
 
-    user_name = models.CharField(max_length=100, null=False, blank=False)
-    user_last_name = models.CharField(max_length=100, null=False, blank=False)
+    user_name = models.CharField(_("nombre"), max_length=100, null=False, blank=False)
+    user_last_name = models.CharField(_("apellido"), max_length=100, null=False, blank=False)
 
     user_address = models.CharField(max_length=500, null=True, blank=True)
     user_country = models.CharField(max_length=40, null=True, blank=True)
