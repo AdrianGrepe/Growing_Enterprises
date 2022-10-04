@@ -1,6 +1,12 @@
-from django.shortcuts import render
+# Django
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth.decorators import login_required
 
-from .forms import UserProfileForm
+# Models
+
+# Forms
+from .forms import UserRegisterForm, EditProfileForm
 
 # Create your views here.
 
@@ -11,16 +17,68 @@ def index(request):
 def register(request):
     ctx = {}
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES)
+        form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
-            print('procede a guardarlo')
-            # form.save()
+            form.save()
     else:
-        form = UserProfileForm()
+        form = UserRegisterForm()
 
     ctx['form'] = form
     return render(request, 'User/register.html', context=ctx)
 
 
+def profile(request):
+    ctx = {}
+    return render(request, 'User/register.html', context=ctx)
+
+
+def edit_profile(request):
+    ctx = {}
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UserRegisterForm()
+
+    ctx['form'] = form
+    ctx['user'] = request.user
+    return render(request, 'User/profile_form.html', context=ctx)
+
+
 def login(request):
-    return render(request, 'User/login2.html')
+    ctx = {}
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            auth_login(request, user)
+
+            return redirect('index')
+
+        else:
+            ctx['error'] = 'Usuario o contraseña incorrecto'
+            ctx['username'] = username
+
+            return render(request,'User/login2.html', context=ctx)
+
+    return render(request, 'User/login2.html', context=ctx)
+
+
+def about(request):
+
+    return render(request, 'User/index2.html')
+
+
+def enterprises(request):
+
+    return render(request, 'User/index2.html')
+
+
+def clients(request):
+
+    return render(request, 'User/index2.html')

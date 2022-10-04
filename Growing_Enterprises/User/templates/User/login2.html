@@ -202,9 +202,12 @@ footer small {
             </div>
             <div class="colm-form">
                 <div class="form-container">
-                    <input type="text" placeholder="Email o Teléfono">
-                    <input type="password" placeholder="Password">
-                    <button class="btn-login">Login</button>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input name="username" type="text" placeholder="Email o Teléfono" value="{{ username }}">
+                        <input name="password" type="password" placeholder="Password">
+                        <button class="btn-login">Login</button>
+                    </form>
                     <a href="#">¿Olvidaste tu contraseña?</a>
                     <button class="btn-new">Crea una cuenta Nueva</button>
                 </div>
