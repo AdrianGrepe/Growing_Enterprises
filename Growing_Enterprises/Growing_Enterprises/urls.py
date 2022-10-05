@@ -20,8 +20,15 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    #honeypot
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('growing_enterprises_admin/', admin.site.urls),
+    
+    #captcha
+    path('captcha', include('captcha.urls')),
+    
     path('', include('User.urls')),
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('enterprise/', include('Enterprise.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     

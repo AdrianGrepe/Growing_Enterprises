@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 # Models
 
 # Forms
-from .forms import UserRegisterForm, EditProfileForm
+from .forms import UserRegisterForm, EditProfileForm, CaptchaUse
 
 # Create your views here.
 
@@ -18,7 +18,9 @@ def register(request):
     ctx = {}
     if request.method == 'POST':
         form = UserRegisterForm(request.POST, request.FILES)
-        if form.is_valid():
+        #brings captcha class here
+        form_captcha = CaptchaUse(request.POST)
+        if form.is_valid() and form_captcha.is_valid():
             form.save()
     else:
         form = UserRegisterForm()
