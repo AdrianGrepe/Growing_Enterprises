@@ -12,12 +12,19 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
+# External
+from captcha.fields import CaptchaField
+
 # Models
 from .models import UserProfile, UserImage
 
 
 AREA_CODES = [('+'+str(c),'+'+str(c)) for c in COUNTRY_CODE_TO_REGION_CODE.keys()]
 COUNTRIES = [(str(c.name), str(c.name)) for c in countries]
+
+
+class CaptchaUse(forms.Form):
+    captcha = CaptchaField()
 
 
 class UserRegisterForm (ModelForm):

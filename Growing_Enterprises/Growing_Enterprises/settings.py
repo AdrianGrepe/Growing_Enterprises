@@ -48,16 +48,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.humanize',
+    'captcha',
     # 'django_crontab',
+
+    #Packages
+    'admin_honeypot',
+    
     
     #Local apps
     'User',
     'Growing_Enterprises',
     'Enterprise',
     # 'records',
-    # 'admin_honeypot',
     # 'dbbackup',
     
     #External apps
