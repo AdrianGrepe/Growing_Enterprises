@@ -1,50 +1,237 @@
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/67239/animate.min.css" rel="stylesheet" />
+{% load static %}
 
-<!-- under overlay stuff -->
-<div class="body"></div>
+<!DOCTYPE html>
+<html lang="mx">
+<head>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+           
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #b19f84
+;
+    color: #1c1e21;
+}
 
-<!-- the panel -->
-<div class="overlay">
-    <div class="ui-panel login-panel animated bounceInDown">
-        <header>
-            <div class="left logo">
-                <a href="#logo"><span>Growing</span>Enterprises</a>
+main {
+    height: 90vh;
+    width: 100vw;
+    position: relative;
+    margin: 0 auto;
+}
+
+footer {
+    height: 10vh;
+    background-color: #ffffff;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.colm-logo {
+    flex: 0 0 50%;
+    text-align: left;
+}
+
+.colm-form {
+    flex: 0 0 40%;
+    text-align: center;
+}
+
+.colm-logo img {
+    max-width: 400px;
+}
+
+.colm-logo h2 {
+    font: 26px;
+    font-weight: 400;
+    padding: 0 30px;
+    line-height: 32px;
+}
+
+.colm-form .form-container {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.colm-form .form-container input, .colm-form .form-container .btn-login {
+    width: 100%;
+    margin: 5px 0;
+    height: 45px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.colm-form .form-container input {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    padding: 0 8px;
+    outline: none;
+}
+
+.colm-form .form-container input:focus {
+    border-color: #2915d9;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.colm-form .form-container .btn-login {
+    background-color: #2915d9;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.colm-form .form-container a {
+    display: block;
+    color: #2915d9;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #dadde1;
+}
+
+.colm-form .form-container a:hover {
+    text-decoration: underline;
+}
+
+.colm-form .form-container .btn-new {
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 20px; 
+}
+
+.colm-form p {
+    font-size: 14px;
+}
+
+.colm-form p a {
+    text-decoration: none;
+    color: #1c1e21;
+    font-weight: 600;
+}
+
+.colm-form p a:hover {
+    text-decoration: underline;
+}
+
+.footer-contents {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+footer ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 10px 0;
+}
+
+footer ol:first-child {
+    border-bottom: 1px solid #dddfe2;
+}
+           
+footer ol:first-child li:last-child button {
+    background-color: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    outline: none;
+    color: #4b4f56;
+    padding: 0 8px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+footer ol li {
+    padding-right: 15px;
+    font-size: 12px;
+    color: #385898;
+}
+
+footer ol li a {
+    text-decoration: none;
+    color: #385898;
+}
+
+footer ol li a:hover {
+    text-decoration: underline;
+}
+
+footer small {
+    font-size: 11px;
+}
+    </style>
+	<title>Iniciar sesión</title>
+	<link rel="shortcut icon" type="image/png" href="//platform.docplanner.com/img/general/icons/favicon.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"/>
+	<meta name="robots" content="noindex,nofollow"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="colm-logo">
+                <img src="{% static 'image/logo2.jpeg' %}" alt="logo" />
+
+                <h2>Growing Enterprises te ayuda a contactar a profesionales para simplificar tu vida.</h2>
             </div>
-
-            <div class="right">
-                <a href="#close" id="close" class="ui-button close">
-          x
-        </a>
+            <div class="colm-form">
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input name="username" type="text" placeholder="Email o Teléfono" value="{{ username }}">
+                        <input name="password" type="password" placeholder="Password">
+                        <button class="btn-login">Login</button>
+                    </form>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <button class="btn-new">Crea una cuenta Nueva</button>
+                </div>
+                <p><a href="#"><b>Términos y condiciones</b></a>.</p>
             </div>
-        </header>
-
-        <div class="login-form">
-            <div class="subtitle">Login or register</div>
-            <input type="text" placeholder="Username" />
-            <input type="text" placeholder="Password" /> {{ form.captcha }}
-            <input type="submit" value="Submit" />
         </div>
-
-        <footer>
-            <div class="left social-login">
-                Regístrate con
-                <i class="fa fa-fw fa-twitter"></i>
-                <i class="fa fa-fw fa-facebook"></i>
-                <i class="fa fa-fw fa-google-plus"></i>
-            </div>
-
-            <div class="right form-actions">
-                <a href="#login" class="ui-button inactive login">Login</a>
-                <a href="#register" class="ui-button inactive register">Registro</a>
-            </div>
-        </footer>
-    </div>
-</div>
-
-<script type="text/javascript" src="//use.typekit.net/psm0wvc.js"></script>
-<script type="text/javascript">
-    try {
-        Typekit.load();
-    } catch (e) {}
-</script>
+    </main>
+    <footer>
+        <div class="footer-contents">
+            <ol>
+                <li><a href="#">Español</a></li>
+                <li><a href="#">English</a></li>
+                <li><button>+</button></li>
+           
+            
+               
+                
+                
+            </ol>
+            <small>Growing Enterprises © 2022</small>
+        </div>
+    </footer>
+</body>
+</html>

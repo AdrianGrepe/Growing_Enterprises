@@ -66,21 +66,21 @@ def login(request):
             ctx['error'] = 'Usuario o contraseña incorrecto'
             ctx['username'] = username
 
-            return render(request,'User/login2.html', context=ctx)
+            return render(request,'User/login.html', context=ctx)
 
-    return render(request, 'User/login2.html', context=ctx)
+    return render(request, 'User/login.html', context=ctx)
 
 
 def about(request):
 
-    return render(request, 'User/index2.html')
+    return render(request, 'User/index.html')
 
 
 def enterprises(request):
 
-    return render(request, 'User/index2.html')
+    return render(request, 'User/index.html')
 
 
 def clients(request):
 
-    return render(request, 'User/index2.html')
+    return render(request, 'User/index.html')
