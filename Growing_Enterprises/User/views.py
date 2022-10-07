@@ -1,5 +1,5 @@
 # Django
-from django.shortcuts import render, redirect
+from django.shortcuts import HttpResponse, render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -23,9 +23,11 @@ def register(request):
         if form.is_valid() and form_captcha.is_valid():
             form.save()
     else:
+        form_captcha = CaptchaUse()
         form = UserRegisterForm()
 
     ctx['form'] = form
+    ctx['form_captcha'] = form_captcha
     return render(request, 'User/register.html', context=ctx)
 
 
@@ -52,6 +54,7 @@ def login(request):
     ctx = {}
 
     if request.method == 'POST':
+        form_captcha = CaptchaUse(request.POST)
         username = request.POST['username']
         password = request.POST['password']
 
@@ -60,25 +63,29 @@ def login(request):
         if user is not None:
             auth_login(request, user)
 
-            return redirect('index')
+            return redirect('enterprises')
 
         else:
+            form_captcha = CaptchaUse(request.POST)
             ctx['error'] = 'Usuario o contraseña incorrecto'
             ctx['username'] = username
 
-            return render(request,'User/login.html', context=ctx)
+    else:
+        form_captcha = CaptchaUse()
+
+    ctx['form_captcha'] = form_captcha
 
     return render(request, 'User/login.html', context=ctx)
 
 
 def about(request):
 
-    return render(request, 'User/index.html')
+    return HttpResponse('Nosotros somos...')
 
 
 def enterprises(request):
 
-    return render(request, 'User/index.html')
+    return HttpResponse('Listado de empresas...')
 
 
 def clients(request):
