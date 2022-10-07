@@ -13,3 +13,4 @@ python3 manage.py migrate
 
 # Fill database
 python3 manage.py initdb
+
